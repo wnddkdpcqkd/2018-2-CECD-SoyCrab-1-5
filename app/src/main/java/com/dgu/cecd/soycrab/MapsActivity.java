@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
@@ -18,6 +19,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -97,7 +100,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void mapSync() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(MapsActivity.this);
+        mapFragment.getMapAsync(MapsActivity.this); //onMapReady() 실행됨.
     }
 
     /**
@@ -112,9 +115,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.521504, 126.954152),10)); //start at Seoul
+
+        LatLng myLocationLating = new LatLng(myLatitude,myLongtitude);
+        MarkerOptions myMarker = new MarkerOptions().position(myLocationLating).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_foreground)).title("MyLocation");
+
+        CircleOptions circle = new CircleOptions().center(myLocationLating).radius(5).strokeWidth(0f).fillColor(Color.parseColor("#33ff0000"));
+        mMap.addCircle(circle);
+        mMap.addMarker(myMarker);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocationLating,16));
     }
 }
