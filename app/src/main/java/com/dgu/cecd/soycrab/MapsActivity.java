@@ -1,11 +1,13 @@
 package com.dgu.cecd.soycrab;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +17,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,6 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 
 import java.security.acl.Permission;
 import java.util.ArrayList;
@@ -35,7 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private boolean isGPSEnabled, isNetworkEnabled;
-    private MyPermissionListner permissionListner;
+    private MyPermissionListner mPermissionListner;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private double myLatitude, myLongtitude;
 
@@ -43,10 +47,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
+        mPermissionListner = new MyPermissionListner();
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        new TedPermission(this).setPermissionListener(mPermissionListner)
+                .setDeniedMessage("need location authorization\n 1. press 설정 \n 2. press 권한 \n location on")
+                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+                .setGotoSettingButton(true)
+                .setGotoSettingButtonText("설정")
+                .check();
+
     }
 
     private class MyPermissionListner implements PermissionListener {
@@ -70,7 +81,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void getCurrentLocation() {
+
         OnCompleteListener<Location> completeListener = new OnCompleteListener<Location>() {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
@@ -78,26 +91,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Location currentlocation = task.getResult();
                     myLatitude = currentlocation.getLatitude();
                     myLongtitude = currentlocation.getLongitude();
-                    LatLng myLocationLatLng = new LatLng(myLatitude, myLongtitude);
                     mapSync();
                 } else {
                 }
             }
         };
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(MapsActivity.this, completeListener);
     }
 
     private void mapSync() {
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(MapsActivity.this); //onMapReady() 실행됨.
@@ -119,9 +122,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.521504, 126.954152),10)); //start at Seoul
 
         LatLng myLocationLating = new LatLng(myLatitude,myLongtitude);
-        MarkerOptions myMarker = new MarkerOptions().position(myLocationLating).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_foreground)).title("MyLocation");
+        MarkerOptions myMarker = new MarkerOptions().position(myLocationLating).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_location)).title("MyLocation");
 
-        CircleOptions circle = new CircleOptions().center(myLocationLating).radius(5).strokeWidth(0f).fillColor(Color.parseColor("#33ff0000"));
+        CircleOptions circle = new CircleOptions().center(myLocationLating).radius(60).strokeWidth(0f).fillColor(Color.parseColor("#33ff0000"));
         mMap.addCircle(circle);
         mMap.addMarker(myMarker);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocationLating,16));
