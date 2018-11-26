@@ -63,7 +63,6 @@ public class MyService extends Service {
             Intent forgroundActivityIntent = new Intent(this, ForegroundActivity.class);
             startActivity(forgroundActivityIntent);
         } else {
-            h.removeCallbacks(r);
             stopForeground(true);
             stopSelf();
 

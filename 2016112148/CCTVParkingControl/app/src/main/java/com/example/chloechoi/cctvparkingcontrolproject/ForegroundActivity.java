@@ -49,6 +49,7 @@ public class ForegroundActivity extends AppCompatActivity {
         if (!isMyServiceRunning(MyService.class)) return;
         Intent stopIntent = new Intent(this, MyService.class);
         stopIntent.setAction("stop");
+        h.removeCallbacks(r);
         startService(stopIntent);
     }
 
