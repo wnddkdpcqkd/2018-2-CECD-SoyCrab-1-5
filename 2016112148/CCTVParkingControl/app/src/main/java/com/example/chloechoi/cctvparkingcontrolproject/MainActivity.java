@@ -25,19 +25,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void start(View v) {
         if (isMyServiceRunning(MyService.class)) return;
-        Log.d("0207", "start: my service is not running");
         Intent startIntent = new Intent(this, MyService.class);
         startIntent.setAction("start");
         startService(startIntent);
     }
 
-    public void stop(View v) {
-        if (!isMyServiceRunning(MyService.class)) return;
-        Log.d("0207", "start: my service is running");
-        Intent stopIntent = new Intent(this, MyService.class);
-        stopIntent.setAction("stop");
-        startService(stopIntent);
-    }
+//    public void stop(View v) {
+//        if (!isMyServiceRunning(MyService.class)) return;
+//        Log.d("0207", "start: my service is running");
+//        Intent stopIntent = new Intent(this, MyService.class);
+//        stopIntent.setAction("stop");
+//        startService(stopIntent);
+//    }
 
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);

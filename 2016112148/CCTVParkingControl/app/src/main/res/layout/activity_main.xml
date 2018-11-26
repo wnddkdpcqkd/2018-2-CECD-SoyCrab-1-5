@@ -15,13 +15,13 @@
         android:text="서비스 시작"
         android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/stop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="#AA0000"
-        android:onClick="stop"
-        android:text="서비스 중지"
-        android:textAllCaps="false" />
+    <!--<Button-->
+        <!--android:id="@+id/stop"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="20dp"-->
+        <!--android:background="#AA0000"-->
+        <!--android:onClick="stop"-->
+        <!--android:text="서비스 중지"-->
+        <!--android:textAllCaps="false" />-->
 </LinearLayout>
