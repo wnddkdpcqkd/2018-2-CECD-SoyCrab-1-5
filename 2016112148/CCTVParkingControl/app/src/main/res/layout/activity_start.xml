@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/start_logo"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:src="@drawable/app_logo"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/start_text"
+        android:layout_below="@id/start_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="60dp">
+
+        <view
+            android:layout_width="122dp"
+            android:layout_height="1dp"
+            android:background="@color/lightGray"
+            />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start with"
+            android:textColor="@color/lightGray"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <view
+            android:layout_width="122dp"
+            android:layout_height="1dp"
+            android:background="@color/lightGray"
+            />
+
+    </LinearLayout>
+    
+    <Button
+    android:id="@+id/start_with_kakao"
+    android:layout_below="@id/start_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="60dp"
+    android:background="@drawable/start_with_kakao"
+        android:layout_centerHorizontal="true"
+    />
+
+    <Button
+        android:id="@+id/start_with_gmail"
+        android:layout_below="@id/start_with_kakao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/start_with_gmail"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>
