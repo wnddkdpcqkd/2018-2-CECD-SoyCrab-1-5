@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    >
+
+    <!--위에 상태바 출ㄹ력해야함-->
+
+    <ImageView
+        android:id="@+id/join_completed_icon"
+        android:layout_marginTop="90dp"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/join_completed"/>
+
+    <TextView
+        android:id="@+id/join_completed_text"
+        android:layout_below="@id/join_completed_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입이 완료되었습니다"
+        android:textColor="#600DC7"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/start_app_btn"
+        android:layout_below="@id/join_completed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/join_start_app"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        />
+    
+</RelativeLayout>
