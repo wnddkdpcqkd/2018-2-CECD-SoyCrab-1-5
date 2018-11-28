@@ -7,9 +7,28 @@
 
     <!--위에 상태바 출ㄹ력해야함-->
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가입"
+            android:textColor="#000000"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lightGray"
+            />
+    </RelativeLayout>
+
     <ImageView
         android:id="@+id/join_completed_icon"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="130dp"
         android:layout_width="98dp"
         android:layout_height="98dp"
         android:layout_centerHorizontal="true"
