@@ -13,12 +13,24 @@ import android.view.View;
  * Created by chloechoi on 28/11/2018.
  */
 
-public class FragmentActivity extends AppCompatActivity{
+public class FragmentActivity extends android.support.v4.app.FragmentActivity{
 
+
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+//        super.onCreate(savedInstanceState, persistentState);
+//        setContentView(R.layout.activity_fragment);
+//
+//        Fragment fragment = new MapFragment();
+//        FragmentManager fm = getFragmentManager();
+//        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//        fragmentTransaction.add(R.id.container, fragment);
+//        fragmentTransaction.commit();
+//    }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
         Fragment fragment = new MapFragment();
