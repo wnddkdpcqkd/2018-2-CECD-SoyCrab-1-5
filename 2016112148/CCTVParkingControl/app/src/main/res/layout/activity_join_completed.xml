@@ -5,8 +5,6 @@
     android:background="@color/background"
     >
 
-    <!--위에 상태바 출ㄹ력해야함-->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="64dp">
