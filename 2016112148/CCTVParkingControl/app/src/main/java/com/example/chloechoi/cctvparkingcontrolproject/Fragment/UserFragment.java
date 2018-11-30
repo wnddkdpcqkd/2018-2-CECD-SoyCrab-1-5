@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject;
+package com.example.chloechoi.cctvparkingcontrolproject.Fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -11,11 +11,11 @@ import android.view.ViewGroup;
  * Created by chloechoi on 28/11/2018.
  */
 
-public class HistoryFragment extends Fragment {
+public class UserFragment extends Fragment{
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_history,container, false);
+        return inflater.inflate(R.layout.fragment_user,container, false);
     }
 }
