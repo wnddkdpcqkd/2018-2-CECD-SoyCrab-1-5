@@ -10,6 +10,7 @@
         android:layout_height="64dp"
         android:background="@color/background">
         <TextView
+            android:id="@+id/parking_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="주차 기록하기"
@@ -24,7 +25,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/complete"/>
+            android:src="@drawable/complete"
+            android:onClick="registerHistory"/>
 
         <View
             android:layout_width="match_parent"
@@ -74,7 +76,8 @@
                 />
         </RelativeLayout>
 
-        <TextView
+        <EditText
+            android:id="@+id/parking_extra_info"
             android:layout_marginHorizontal="10dp"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
