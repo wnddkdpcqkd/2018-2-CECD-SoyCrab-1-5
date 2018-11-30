@@ -65,7 +65,8 @@ public class WriteFragment extends Fragment{
             parkingExtraInfo.setText(strExtraInfo);
 
             /*TODO
-            주차모드 해제는???
+            1. 주차모드 해제는???
+            2. 카메라 연동
              */
         }
 
