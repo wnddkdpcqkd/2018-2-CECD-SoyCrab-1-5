@@ -120,7 +120,8 @@
             android:src="@drawable/join_next_invalid"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:onClick="toNextStage"/>
     </RelativeLayout>
 
 </RelativeLayout>

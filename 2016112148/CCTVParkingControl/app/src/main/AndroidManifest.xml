@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".ForegroundActivity"/>
         <activity android:name=".Join.JoinStageActivity"/>
+        <activity android:name=".Join.JoinCompletedActivity"/>
 
         <service android:name=".MyService"/>
 
