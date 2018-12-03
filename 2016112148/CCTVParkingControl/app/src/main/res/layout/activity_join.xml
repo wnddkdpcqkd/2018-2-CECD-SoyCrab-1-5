@@ -38,14 +38,20 @@
         android:id="@+id/join_get_userPic"
         android:layout_below="@+id/join_actionbar"
         android:layout_margin="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true">
         <ImageView
             android:id="@+id/join_userPic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src=""/>
+            android:src="@drawable/default_userpic"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/join_add_userpic"/>
     </RelativeLayout>
 
     <TableLayout
