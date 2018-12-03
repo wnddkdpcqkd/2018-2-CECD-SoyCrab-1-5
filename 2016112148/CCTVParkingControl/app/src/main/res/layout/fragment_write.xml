@@ -84,7 +84,8 @@
             android:layout_height="wrap_content"
             android:text="메모를 입력하세요."
             android:textColor="@color/lightGray"
-            android:textSize="17dp"/>
+            android:textSize="17dp"
+            android:background="null"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
