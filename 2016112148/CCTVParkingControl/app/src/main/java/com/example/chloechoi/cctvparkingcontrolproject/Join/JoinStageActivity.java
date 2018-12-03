@@ -1,7 +1,9 @@
 package com.example.chloechoi.cctvparkingcontrolproject.Join;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.EditText;
 
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 
@@ -15,6 +17,9 @@ public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
-
+        Intent intent = new Intent(this.getIntent());
+        String s = intent.getStringExtra("userName");
+        EditText userName = (EditText) findViewById(R.id.join_userName);
+        userName.setText(s);
     }
 }

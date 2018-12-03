@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ForegroundActivity"/>
+        <activity android:name=".Join.JoinStageActivity"/>
 
         <service android:name=".MyService"/>
 

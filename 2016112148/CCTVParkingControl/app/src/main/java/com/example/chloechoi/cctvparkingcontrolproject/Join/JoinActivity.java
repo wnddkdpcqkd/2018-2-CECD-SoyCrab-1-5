@@ -1,5 +1,6 @@
 package com.example.chloechoi.cctvparkingcontrolproject.Join;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -62,54 +63,55 @@ public class JoinActivity extends android.support.v4.app.FragmentActivity {
             }
         });
     }
-}
 
-class SessionCallback implements ISessionCallback {
+    class SessionCallback implements ISessionCallback {
 
-    @Override
-    public void onSessionOpened() {
+        @Override
+        public void onSessionOpened() {
 
-        UserManagement.requestMe(new MeResponseCallback() {
-            @Override
-            public void onFailure(ErrorResult errorResult) {
-                String message = "failed to get user info. msg=" + errorResult;
+            UserManagement.requestMe(new MeResponseCallback() {
+                @Override
+                public void onFailure(ErrorResult errorResult) {
+                    String message = "failed to get user info. msg=" + errorResult;
 
-                ErrorCode result = ErrorCode.valueOf(errorResult.getErrorCode());
-                if (result == ErrorCode.CLIENT_ERROR_CODE) {
-                    //에러로 인한 로그인 실패
-                    // finish();
-                } else {
-                    //redirectMainActivity();
+                    ErrorCode result = ErrorCode.valueOf(errorResult.getErrorCode());
+                    if (result == ErrorCode.CLIENT_ERROR_CODE) {
+                        //에러로 인한 로그인 실패
+                        // finish();
+                    } else {
+                        //redirectMainActivity();
+                    }
                 }
-            }
 
-            @Override
-            public void onSessionClosed(ErrorResult errorResult) {
-            }
+                @Override
+                public void onSessionClosed(ErrorResult errorResult) {
+                }
 
-            @Override
-            public void onNotSignedUp() {
+                @Override
+                public void onNotSignedUp() {
 
-            }
+                }
 
-            @Override
-            public void onSuccess(UserProfile userProfile) {
-                //로그인에 성공하면 로그인한 사용자의 일련번호, 닉네임, 이미지url등을 리턴합니다.
-                //사용자 ID는 보안상의 문제로 제공하지 않고 일련번호는 제공합니다.
+                @Override
+                public void onSuccess(UserProfile userProfile) {
+                    //로그인에 성공하면 로그인한 사용자의 일련번호, 닉네임, 이미지url등을 리턴합니다.
+                    //사용자 ID는 보안상의 문제로 제공하지 않고 일련번호는 제공합니다.
 
-                Log.e("UserProfile", userProfile.toString());
-                Log.e("UserProfile", userProfile.getId() + "");
+                    Log.e("UserProfile", userProfile.toString());
+                    Log.e("UserProfile", userProfile.getId() + "");
+
+                    Intent intent = new Intent(JoinActivity.this, JoinStageActivity.class);
+                    intent.putExtra("userName", userProfile.getNickname());
+                    startActivity(intent);
+                }
+            });
+
+        }
+        // 세션 실패시
+        @Override
+        public void onSessionOpenFailed(KakaoException exception) {
 
 
-
-            }
-        });
-
-    }
-    // 세션 실패시
-    @Override
-    public void onSessionOpenFailed(KakaoException exception) {
-
-
+        }
     }
 }
