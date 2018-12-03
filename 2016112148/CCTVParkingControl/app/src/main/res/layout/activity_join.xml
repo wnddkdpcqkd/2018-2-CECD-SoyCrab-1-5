@@ -25,14 +25,28 @@
             />
     </RelativeLayout>
 
-    <ImageView
+    <!--<ImageView-->
+        <!--android:id="@+id/join_get_userPic"-->
+        <!--android:layout_below="@+id/join_actionbar"-->
+        <!--android:layout_margin="50dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/join_userpic"-->
+        <!--android:layout_centerHorizontal="true"/>-->
+
+    <RelativeLayout
         android:id="@+id/join_get_userPic"
         android:layout_below="@+id/join_actionbar"
         android:layout_margin="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/join_userpic"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:id="@+id/join_userPic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src=""/>
+    </RelativeLayout>
 
     <TableLayout
         android:id="@+id/join_userInfo_table"
