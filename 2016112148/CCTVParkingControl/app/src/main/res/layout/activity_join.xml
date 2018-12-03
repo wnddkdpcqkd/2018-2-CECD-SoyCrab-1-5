@@ -94,9 +94,11 @@
                 android:textSize="15dp"
                 android:layout_marginRight="30dp"/>
             <TextView
+                android:id="@+id/join_userApp"
                 android:text="앱을 선택하세요"
                 android:textSize="15dp"
-                android:textColor="#000000"/>
+                android:textColor="#000000"
+                android:onClick="setUserApp"/>
         </TableRow>
     </TableLayout>
 
