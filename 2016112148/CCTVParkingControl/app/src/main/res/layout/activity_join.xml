@@ -71,7 +71,7 @@
             <EditText
                 android:text="이메일을 입력하세요"
                 android:textSize="15dp"
-                android:background="null"/>
+                android:background="@null"/>
         </TableRow>
 
         <TableRow
@@ -83,7 +83,7 @@
             <EditText
                 android:text="이름을 입력하세요"
                 android:textSize="15dp"
-                android:background="null"/>
+                android:background="@null"/>
         </TableRow>
 
         <TableRow

@@ -21,7 +21,7 @@
         android:gravity="center"
         android:layout_marginTop="60dp">
 
-        <view
+        <View
             android:layout_width="122dp"
             android:layout_height="1dp"
             android:background="@color/lightGray"
@@ -35,7 +35,7 @@
             android:layout_marginHorizontal="10dp"
             />
 
-        <view
+        <View
             android:layout_width="122dp"
             android:layout_height="1dp"
             android:background="@color/lightGray"
@@ -43,7 +43,7 @@
 
     </LinearLayout>
     
-    <Button
+    <com.kakao.usermgmt.LoginButton
     android:id="@+id/start_with_kakao"
     android:layout_below="@id/start_text"
     android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
     android:layout_marginTop="60dp"
     android:background="@drawable/start_with_kakao"
         android:layout_centerHorizontal="true"
-    />
+        />
 
     <Button
         android:id="@+id/start_with_gmail"
