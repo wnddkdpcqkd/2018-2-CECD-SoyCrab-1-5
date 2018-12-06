@@ -81,11 +81,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.521504, 126.954152),10)); //start at Seoul
 
         LatLng myLocationLating = new LatLng(myLatitude,myLongtitude);
-<<<<<<< HEAD
-        MarkerOptions myMarker = new MarkerOptions().position(myLocationLating).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_target_loca)).title("MyLocation");
-=======
         MarkerOptions myMarker = new MarkerOptions().position(myLocationLating).icon(BitmapDescriptorFactory.fromResource(R.drawable.map_user_loca)).title("MyLocation");
->>>>>>> 92b07ed8ab089ae00d29c86ee811f0b7c422f8e2
 
         CircleOptions circle = new CircleOptions().center(myLocationLating).radius(60).strokeWidth(0f).fillColor(Color.parseColor("#33ff0000"));
         mMap.addCircle(circle);
