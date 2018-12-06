@@ -5,6 +5,7 @@
     android:background="@color/background">
 
     <ImageView
+        android:id="@+id/user_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -55,10 +56,12 @@
             android:textSize="15dp" />
 
         <ImageView
+            android:id="@+id/user_edit_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:src="@drawable/user_change_app" />
+            android:src="@drawable/user_change_app"
+            android:onClick="editUserApp"/>
     </LinearLayout>
 
 </RelativeLayout>
