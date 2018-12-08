@@ -45,22 +45,22 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
-        Fragment fragment = new UserFragment(); /*TODO 바꾸기*/
+        Fragment fragment = new MapFragment();
         curFragment = 0;
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.container, fragment);
         fragmentTransaction.commit();
 
-//        mPermissionListner = new MyPermissionListner();
-//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-//
-//        new TedPermission(this).setPermissionListener(mPermissionListner)
-//                .setDeniedMessage("need location authorization\n 1. press 설정 \n 2. press 권한 \n location on")
-//                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
-//                .setGotoSettingButton(true)
-//                .setGotoSettingButtonText("설정")
-//                .check();
+        mPermissionListner = new MyPermissionListner();
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        new TedPermission(this).setPermissionListener(mPermissionListner)
+                .setDeniedMessage("need location authorization\n 1. press 설정 \n 2. press 권한 \n location on")
+                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+                .setGotoSettingButton(true)
+                .setGotoSettingButtonText("설정")
+                .check();
     }
 
     private void mapSync() {
@@ -113,6 +113,9 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity{
         Fragment fragment;
         unsetBtnIcon();
         ImageView imageView;
+
+        /*TODO
+        * 이부분 스위치케이스말고 배열써서 더 효율적으로 구현하기*/
 
         switch(v.getId()){
             case R.id.to_map_fragment:{
