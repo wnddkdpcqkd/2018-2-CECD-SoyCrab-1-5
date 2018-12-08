@@ -97,5 +97,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/write_camera"
             android:layout_margin="10dp"/>
+        <ImageView
+            android:id="@+id/write_info_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"/>
     </LinearLayout>
 </LinearLayout>

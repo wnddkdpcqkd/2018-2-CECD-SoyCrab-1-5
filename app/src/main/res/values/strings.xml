@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">CCTVParkingControlProject</string>
+
+    <string name="image_picker_error">Something is wrong with that image. Pick a different one please.</string>
+
     <string name="kakao_app_key"></string>
+
     <string name="join_default_email">이메일을 입력하세요</string>
     <string name="join_default_name">이름을 입력하세요</string>
     <string name="join_default_app">앱을 선택하세요</string>
