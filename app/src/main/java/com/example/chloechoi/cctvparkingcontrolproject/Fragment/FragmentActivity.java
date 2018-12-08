@@ -45,22 +45,22 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
-        Fragment fragment = new MapFragment();
+        Fragment fragment = new WriteFragment();
         curFragment = 0;
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.container, fragment);
         fragmentTransaction.commit();
 
-        mPermissionListner = new MyPermissionListner();
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-        new TedPermission(this).setPermissionListener(mPermissionListner)
-                .setDeniedMessage("need location authorization\n 1. press 설정 \n 2. press 권한 \n location on")
-                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
-                .setGotoSettingButton(true)
-                .setGotoSettingButtonText("설정")
-                .check();
+//        mPermissionListner = new MyPermissionListner();
+//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+//
+//        new TedPermission(this).setPermissionListener(mPermissionListner)
+//                .setDeniedMessage("need location authorization\n 1. press 설정 \n 2. press 권한 \n location on")
+//                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+//                .setGotoSettingButton(true)
+//                .setGotoSettingButtonText("설정")
+//                .check();
     }
 
     private void mapSync() {
@@ -152,9 +152,6 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity{
                 break;
             }
         }
-        /*TODO
-        이렇게 케이스를 나누지 말고 그냥 인트형 변수, 배열로 하는 간단한 방법은 없을까?
-         */
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

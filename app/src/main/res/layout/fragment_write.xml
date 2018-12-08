@@ -20,13 +20,13 @@
             android:layout_centerInParent="true"/>
 
         <ImageView
+            android:id="@+id/write_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/complete"
-            android:onClick="registerHistory"/>
+            android:src="@drawable/complete"/>
 
         <View
             android:layout_width="match_parent"
@@ -92,6 +92,7 @@
         android:layout_height="wrap_content"
         android:background="#ffffff">
         <ImageView
+            android:id="@+id/write_get_from_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/write_camera"
