@@ -22,20 +22,22 @@ public class UserFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-            ImageView iv = (ImageView)getView().findViewById(R.id.user_background);
+        View rootView = inflater.inflate(R.layout.fragment_user,container, false);
 
-            Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.user_backgroundpic);
+        ImageView bckPic = (ImageView) rootView.findViewById(R.id.user_background);
 
-            Bitmap resized = Bitmap.createScaledBitmap(image, 450, 200, true);
-            iv.setImageBitmap(resized);
-            iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE); // 레이아웃 크기에 이미지를 맞춘다
-            iv.setPadding(3, 3, 3, 3);
+        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.user_backgroundpic);
+
+        Bitmap resized = Bitmap.createScaledBitmap(image, 450, 200, true);
+        bckPic.setImageBitmap(resized);
+        bckPic.setScaleType(ImageView.ScaleType.CENTER_INSIDE); // 레이아웃 크기에 이미지를 맞춘다
+        bckPic.setPadding(3, 3, 3, 3);
 //            iv.setOnClickListener(new OnClickListener(){
 //                public void onClick(View arg0) {
 //                    finish();
 //                }
 
-        return inflater.inflate(R.layout.fragment_user,container, false);
+        return rootView;
     }
 
     public void user_change_app(View v){
