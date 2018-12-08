@@ -64,8 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:src="@drawable/user_change_app"
-                android:onClick="editUserApp"/>
+                android:src="@drawable/user_change_app"/>
         </LinearLayout>
 
         <LinearLayout

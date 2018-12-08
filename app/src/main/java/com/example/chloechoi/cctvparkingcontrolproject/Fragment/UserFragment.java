@@ -21,6 +21,8 @@ import com.example.chloechoi.cctvparkingcontrolproject.R;
  */
 
 public class UserFragment extends Fragment{
+    int editState = 0;
+    int userApp;
 
     @Nullable
     @Override
@@ -38,14 +40,157 @@ public class UserFragment extends Fragment{
         bckPic.setScaleType(ImageView.ScaleType.CENTER_INSIDE); // 레이아웃 크기에 이미지를 맞춘다
         bckPic.setPadding(3, 3, 3, 3);
 
+        // get User Info
+        userApp = 0; // 테스트를 위해서 일단은 이걸로 초기화
+
+        final ImageView[] appIconViews = {
+                (ImageView) rootView.findViewById(R.id.user_kakaonavi),
+                (ImageView) rootView.findViewById(R.id.user_tmap),
+                (ImageView) rootView.findViewById(R.id.user_googlemap)};
+        final int[] setAppIcons = {
+                R.drawable.user_kakaonavi,
+                R.drawable.user_tmap,
+                R.drawable.user_googlemap
+        };
+        final int[] unsetAppIcons = {
+                R.drawable.user_kakaonavi_unchecked,
+                R.drawable.user_tmap_unchecked,
+                R.drawable.user_googlemap_unchecked
+        };
+
+        final ImageView editCompleted = (ImageView) rootView.findViewById(R.id.user_edit_app);
+
+        rootView.findViewById(R.id.user_edit_app).setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        if(editState == 0){
+                            editCompleted.setImageResource(R.drawable.user_edit_completed);
+
+                            for(int i=0; i<3; i++){
+                                if(i == userApp) appIconViews[i].setImageResource(setAppIcons[i]);
+                                else appIconViews[i].setImageResource(unsetAppIcons[i]);
+                            }
+
+                            editState = 1;
+                        }
+                        else{
+                            // 서버에 선택된 내비 보내고
+                            editCompleted.setImageResource(R.drawable.user_change_app);
+
+                            for(int i=0; i<3; i++)
+                                appIconViews[i].setImageResource(android.R.color.transparent);
+
+                            editState = 0;
+                        }
+                    }
+                }
+        );
+
+        appIconViews[0].setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        if(editState == 1 && userApp != 0){
+                            appIconViews[userApp].setImageResource(unsetAppIcons[userApp]);
+                            userApp = 0;
+                            appIconViews[userApp].setImageResource(setAppIcons[userApp]);
+                        }
+                    }
+                }
+        );
+
+        appIconViews[1].setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        if(editState == 1 && userApp != 1){
+                            appIconViews[userApp].setImageResource(unsetAppIcons[userApp]);
+                            userApp = 1;
+                            appIconViews[userApp].setImageResource(setAppIcons[userApp]);
+                        }
+                    }
+                }
+        );
+
+        appIconViews[2].setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        if(editState == 1 && userApp != 2){
+                            appIconViews[userApp].setImageResource(unsetAppIcons[userApp]);
+                            userApp = 2;
+                            appIconViews[userApp].setImageResource(setAppIcons[userApp]);
+                        }
+                    }
+                }
+        );
+
         return rootView;
     }
 
-    public void user_change_app(View v){
+    public void editUserApp(View v){
         /*TODO
         * 1. change user_app_edit img
         * 2. show navi apps's icon
         * 3. set img onclick listener*/
+
+        if(editState == 0){
+            ImageView editCompleted = (ImageView) v.findViewById(R.id.user_edit_app);
+            editCompleted.setImageResource(R.drawable.user_edit_completed);
+            editState = 1;
+
+            final ImageView[] appIconViews = {
+                    (ImageView) v.findViewById(R.id.user_kakaonavi),
+                    (ImageView) v.findViewById(R.id.user_tmap),
+                    (ImageView) v.findViewById(R.id.user_googlemap)};
+            final int[] setAppIcons = {
+                    R.drawable.user_kakaonavi,
+                    R.drawable.user_tmap,
+                    R.drawable.user_googlemap
+            };
+            final int[] unsetAppIcons = {
+                    R.drawable.user_kakaonavi_unchecked,
+                    R.drawable.user_tmap_unchecked,
+                    R.drawable.user_googlemap_unchecked
+            };
+
+            appIconViews[0].setOnClickListener(
+                    new View.OnClickListener() {
+                        public void onClick(View v) {
+                            if(userApp != 0){
+                                appIconViews[userApp].setImageResource(unsetAppIcons[userApp]);
+                                userApp = 0;
+                                appIconViews[userApp].setImageResource(setAppIcons[userApp]);
+                            }
+                        }
+                    }
+            );
+
+            appIconViews[1].setOnClickListener(
+                    new View.OnClickListener() {
+                        public void onClick(View v) {
+                            if(userApp != 1){
+                                appIconViews[userApp].setImageResource(unsetAppIcons[userApp]);
+                                userApp = 1;
+                                appIconViews[userApp].setImageResource(setAppIcons[userApp]);
+                            }
+                        }
+                    }
+            );
+
+            appIconViews[2].setOnClickListener(
+                    new View.OnClickListener() {
+                        public void onClick(View v) {
+                            if(userApp != 2){
+                                appIconViews[userApp].setImageResource(unsetAppIcons[userApp]);
+                                userApp = 2;
+                                appIconViews[userApp].setImageResource(setAppIcons[userApp]);
+                            }
+                        }
+                    }
+            );
+        }
+        else{
+            // 서버에 선택된 내비 보내고
+
+        }
     }
 
     public Point getScreenSize(Activity activity) {
