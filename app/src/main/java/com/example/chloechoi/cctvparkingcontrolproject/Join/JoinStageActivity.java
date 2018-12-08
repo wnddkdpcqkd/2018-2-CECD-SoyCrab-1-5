@@ -92,6 +92,7 @@ public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
 
                 userPic = (ImageView) findViewById(R.id.join_userPic);
                 userPic.setImageBitmap(bitmap); // 이미지뷰에 이미지 삽입
+                /*TODO 원형 이미지로 삽입*/
             } catch (IOException e) {
                 //Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
             }
