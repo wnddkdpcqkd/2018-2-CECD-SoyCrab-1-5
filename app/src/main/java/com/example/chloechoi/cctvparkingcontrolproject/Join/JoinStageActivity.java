@@ -1,12 +1,18 @@
 package com.example.chloechoi.cctvparkingcontrolproject.Join;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -14,10 +20,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chloechoi.cctvparkingcontrolproject.PermissionUtils;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
+
+import java.io.File;
+import java.io.IOException;
 
 public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
     String[] appList = {"카카오내비", "T map", "네이버 지도"};
+
+    public static final String FILE_NAME = "temp.jpg";
+    private static final int GALLERY_PERMISSIONS_REQUEST = 0;
+    private static final int GALLERY_IMAGE_REQUEST = 1;
+
+    ImageView userPic;
 
     /*TODO 사진 연동 & 모든 항목 채워지면 다음버튼 활성화*/
 
@@ -33,6 +49,55 @@ public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
 
         CheckItemThread thread = new CheckItemThread();
         thread.start();
+
+        findViewById(R.id.join_get_from_gallery).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) { startGalleryChooser(); }
+                }
+        );
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == RESULT_OK) {
+            Uri photoUri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", getCameraFile());
+            uploadImage(photoUri);
+        }
+    }
+
+    public void startGalleryChooser() {
+        if (PermissionUtils.requestPermission(this, GALLERY_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT); // 이미지 가져오기
+            startActivityForResult(Intent.createChooser(intent, "Select a photo"),
+                    GALLERY_IMAGE_REQUEST);
+        }
+    }
+
+    public File getCameraFile() {
+        File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        return new File(dir, FILE_NAME);
+    }
+
+    public void uploadImage(Uri uri) {
+        if (uri != null) {
+            try {
+                // scale the image to save on bandwidth
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                //bitmap = bitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+
+                userPic = (ImageView) findViewById(R.id.join_userPic);
+                userPic.setImageBitmap(bitmap); // 이미지뷰에 이미지 삽입
+            } catch (IOException e) {
+                //Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
+            }
+        } else {
+            //Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
+        }
     }
 
     public void toNextStage(View v){

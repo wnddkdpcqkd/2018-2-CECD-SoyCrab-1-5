@@ -34,6 +34,10 @@ import static android.app.Activity.RESULT_OK;
 
 public class WriteFragment extends Fragment{
 
+    /*TODO
+            1. 주차모드 해제는???
+             */
+
     int state;
 
     TextView parking_state;
@@ -71,7 +75,7 @@ public class WriteFragment extends Fragment{
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            // 서버 API에 맞춰 서버에 전달
+                            /*TODO 서버 API에 맞춰 서버에 전달*/
                             parkingExtraInfo = (EditText) v.findViewById(R.id.parking_extra_info);
                             String strExtraInfo = parkingExtraInfo.getText().toString();
                         }
@@ -121,11 +125,6 @@ public class WriteFragment extends Fragment{
             parking_info.setText(addressInfo);
             parking_time.setText(parkedTime);
             parkingExtraInfo.setText(strExtraInfo);
-
-            /*TODO
-            1. 주차모드 해제는???
-            2. 카메라 연동
-             */
         }
 
         return rootView;
