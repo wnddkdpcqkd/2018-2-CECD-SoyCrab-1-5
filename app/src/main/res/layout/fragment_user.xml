@@ -44,6 +44,7 @@
             android:textColor="#B5B1B1"/>
 
         <LinearLayout
+            android:id="@+id/user_app_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/user_id"
@@ -65,6 +66,28 @@
                 android:layout_marginLeft="4dp"
                 android:src="@drawable/user_change_app"
                 android:onClick="editUserApp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_app_group"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:id="@+id/user_kakaonavi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"/>
+            <ImageView
+                android:id="@+id/user_tmap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+            <ImageView
+                android:id="@+id/user_googlemap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"/>
         </LinearLayout>
     </RelativeLayout>
 
