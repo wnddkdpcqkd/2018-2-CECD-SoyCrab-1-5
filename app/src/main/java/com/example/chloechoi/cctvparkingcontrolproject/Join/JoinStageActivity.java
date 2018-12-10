@@ -20,16 +20,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.chloechoi.cctvparkingcontrolproject.PermissionUtils;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
-
-import java.io.File;
-import java.io.IOException;
 
 public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
     String[] appList = {"카카오내비", "T map", "네이버 지도"};
 
-    public static final String FILE_NAME = "temp.jpg";
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
     private static final int GALLERY_IMAGE_REQUEST = 1;
 
@@ -62,9 +60,8 @@ public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == RESULT_OK) {
-            Uri photoUri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", getCameraFile());
-            uploadImage(photoUri);
+        if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            uploadImage(data.getData());
         }
     }
 
@@ -78,24 +75,10 @@ public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
         }
     }
 
-    public File getCameraFile() {
-        File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        return new File(dir, FILE_NAME);
-    }
-
     public void uploadImage(Uri uri) {
         if (uri != null) {
-            try {
-                // scale the image to save on bandwidth
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                //bitmap = bitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
-
-                userPic = (ImageView) findViewById(R.id.join_userPic);
-                userPic.setImageBitmap(bitmap); // 이미지뷰에 이미지 삽입
-                /*TODO 원형 이미지로 삽입*/
-            } catch (IOException e) {
-                //Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
-            }
+            userPic = (ImageView) findViewById(R.id.join_userPic);
+            Glide.with(this).load(uri).apply(RequestOptions.circleCropTransform()).into(userPic);
         } else {
             //Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
         }
