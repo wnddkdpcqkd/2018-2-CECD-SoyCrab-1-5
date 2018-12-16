@@ -28,7 +28,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
     @Override
     /*TODO onBindViewHolder parameterㄱㅏ 안바뀜;;;;*/
     public void onBindViewHolder(HistoryViewHolder holder, int position) {
-        //holder.tvSimpleInfo.setText(mItem.get(position).simpleInfo);
+        holder.tvSimpleInfo.setText(mItem.get(position).simpleInfo);
     }
 
     @Override
