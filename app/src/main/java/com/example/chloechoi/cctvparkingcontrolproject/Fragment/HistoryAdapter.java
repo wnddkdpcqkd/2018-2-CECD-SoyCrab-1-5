@@ -1,5 +1,6 @@
 package com.example.chloechoi.cctvparkingcontrolproject.Fragment;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,10 @@ import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
     ArrayList<HistoryItem> mItem;
+
+    public HistoryAdapter(ArrayList<HistoryItem> searchDataSet, Activity activity) {
+        mItem = searchDataSet;
+    }
 
     @Override
     public HistoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
