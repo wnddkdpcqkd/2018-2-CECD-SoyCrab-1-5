@@ -38,6 +38,8 @@ public class HistoryFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        /*TODO
+        * 서버에서 데이터받아오는 부분*/
 
         return view;
     }
@@ -50,14 +52,5 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initDataset();
     }
-
-    private void initDataset() {
-        //for Test
-//        mSearchData = new ArrayList<>();
-//        mSearchData.add(new HistoryItem("충무로 16-2"));
-//        mSearchData.add(new HistoryItem("퇴계로 49길 14");
-    }
-
 }
