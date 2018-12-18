@@ -36,6 +36,9 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history,container, false);
 
+        ArrayList<String> arrayList;
+        //ArrayList<DayData> Day_data;
+
         materialCalendarView = (MaterialCalendarView) view.findViewById(R.id.history_calendarView);
         materialCalendarView.state().edit()
                 .setFirstDayOfWeek(Calendar.SUNDAY)
@@ -49,7 +52,28 @@ public class HistoryFragment extends Fragment {
                     @Override
                     public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                         /*TODO send request to server and get the datas*/
-                        return;
+                        CalendarDay selectedDay = null;
+                        String DATE;
+                        int year;
+                        int month;
+                        int day;
+
+                        selectedDay = date;
+                        DATE = selectedDay.toString();
+                        String[] parsedDATA = DATE.split("[{]");
+                        parsedDATA = parsedDATA[1].split("[}]");
+                        parsedDATA = parsedDATA[0].split("-");
+                        year = Integer.parseInt(parsedDATA[0]);
+                        month = Integer.parseInt(parsedDATA[1])+1;
+                        day = Integer.parseInt(parsedDATA[2]);
+
+//                        arrayList = new ArrayList<String>();
+//                        for(int i=0; i<Day_data.size(); i++){
+//                            if(Day_data.get(i).getDay() == day){
+//                                arrayList.add(Day_data.get(i).getText_schedule());
+//                            }
+//                        }
+                        //updateScheduleList();
                     }
                 }
         );
@@ -68,6 +92,11 @@ public class HistoryFragment extends Fragment {
 
         return view;
     }
+
+//    public void updateScheduleList(){
+//        adapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,arrayList);
+//        schedule_List.setAdapter(adapter);
+//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
