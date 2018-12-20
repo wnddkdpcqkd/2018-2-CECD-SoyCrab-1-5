@@ -24,6 +24,9 @@ public class JoinActivity extends android.support.v4.app.FragmentActivity {
     private static final String TAG = "KAKAO LOGIN RELATED";
     SessionCallback callback;
 
+    /*TODO
+    * add gmail login*/
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

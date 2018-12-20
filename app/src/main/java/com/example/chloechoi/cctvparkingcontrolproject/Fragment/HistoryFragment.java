@@ -94,7 +94,8 @@ public class HistoryFragment extends Fragment {
                                     @Override
                                     public void onItemClick(View view, int position) {
                                         /*TODO
-                                        * 주차기록 디테일 뷰로 이동*/
+                                        * 주차기록 디테일 뷰로 이동
+                                        * 다은이랑 어떻게 띄울지 서버 고려해서 결정해야함*/
                                     }
 
                                     @Override
