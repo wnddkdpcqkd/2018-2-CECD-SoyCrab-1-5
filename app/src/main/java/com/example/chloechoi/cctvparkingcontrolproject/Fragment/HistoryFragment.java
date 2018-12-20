@@ -39,6 +39,12 @@ public class HistoryFragment extends Fragment {
         ArrayList<String> arrayList;
         //ArrayList<DayData> Day_data;
 
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.history_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.scrollToPosition(0);
+
         materialCalendarView = (MaterialCalendarView) view.findViewById(R.id.history_calendarView);
         materialCalendarView.state().edit()
                 .setFirstDayOfWeek(Calendar.SUNDAY)
@@ -74,21 +80,35 @@ public class HistoryFragment extends Fragment {
 //                            }
 //                        }
                         //updateScheduleList();
+
+                        /*TODO
+                        * get data from server by using above variables
+                        * and push that into mHistoryData ArrayList*/
+
+                        mAdapter = new HistoryAdapter(mHistoryData, getActivity());
+                        mRecyclerView.setAdapter(mAdapter);
+                        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+                        mRecyclerView.addOnItemTouchListener(
+                                new HistoryRecyclerItemClickListener(getActivity(), mRecyclerView, new HistoryRecyclerItemClickListener.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View view, int position) {
+                                        /*TODO
+                                        * 주차기록 디테일 뷰로 이동*/
+                                    }
+
+                                    @Override
+                                    public void onLongItemClick(View view, int position) {
+
+                                    }
+                                })
+                        );
                     }
                 }
         );
         /*TODO reference
-        * http://dpdpwl.tistory.com/3#recentComments */
-
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.history_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.scrollToPosition(0);
-        mAdapter = new HistoryAdapter(mHistoryData, getActivity());
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
+        * http://dpdpwl.tistory.com/3#recentComments
+        * https://hashcode.co.kr/questions/4935/android-material-calendar%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-listview-%EC%9D%BC%EC%A0%95-%EC%B6%94%EA%B0%80*/
 
         return view;
     }

@@ -12,6 +12,7 @@ import com.example.chloechoi.cctvparkingcontrolproject.R;
 
 public class HistoryViewHolder extends RecyclerView.ViewHolder{
     TextView tvSimpleInfo;
+
     public HistoryViewHolder(View itemView) {
         super(itemView);
         tvSimpleInfo = (TextView) itemView.findViewById(R.id.history_simple_address);

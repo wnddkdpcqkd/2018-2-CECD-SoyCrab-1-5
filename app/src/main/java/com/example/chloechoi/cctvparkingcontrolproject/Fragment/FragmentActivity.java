@@ -45,6 +45,9 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
+        /*TODO
+        * 사용자가 마지막으로 접근한 프래그먼트 띄우기*/
+
         Fragment fragment = new MapFragment();
         curFragment = 0;
         FragmentManager fm = getFragmentManager();
