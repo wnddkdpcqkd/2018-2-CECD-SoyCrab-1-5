@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 
-public class MainActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

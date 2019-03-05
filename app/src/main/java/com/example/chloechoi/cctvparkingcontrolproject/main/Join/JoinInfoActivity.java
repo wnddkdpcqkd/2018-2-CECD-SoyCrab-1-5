@@ -94,7 +94,7 @@ public class JoinInfoActivity extends android.support.v4.app.FragmentActivity{
         ImageView toNextBtn = (ImageView) findViewById(R.id.join_complete_btn);
         if(toNextBtn.getDrawable().getConstantState().equals
                 (getResources().getDrawable(R.drawable.join_next_valid).getConstantState())){
-            // 서버에 사용자 정보 전송
+            // TODO 서버에 사용자 정보 전송
             Intent intent = new Intent(JoinInfoActivity.this, JoinCompletedActivity.class);
             startActivity(intent);
         }

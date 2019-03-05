@@ -24,6 +24,7 @@
         <activity android:name=".test.ForegroundActivity"/>
         <activity android:name=".main.Join.JoinInfoActivity"/>
         <activity android:name=".main.Join.JoinCompletedActivity"/>
+        <activity android:name=".main.MainActivity"/>
 
         <service android:name=".test.MyService"/>
 

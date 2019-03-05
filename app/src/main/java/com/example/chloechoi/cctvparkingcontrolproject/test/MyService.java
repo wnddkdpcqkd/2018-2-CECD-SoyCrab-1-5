@@ -45,7 +45,7 @@ public class MyService extends Service {
         counter++;
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);
+                new Intent(this, TestActivity.class), 0);
 
         return new NotificationCompat.Builder(this)
                 .setContentTitle("soyCrab")
@@ -67,7 +67,7 @@ public class MyService extends Service {
             stopForeground(true);
             stopSelf();
 
-            Intent mainActivityIntent = new Intent(this, MainActivity.class);
+            Intent mainActivityIntent = new Intent(this, TestActivity.class);
             startActivity(mainActivityIntent);
         }
 
