@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Fragment;
+package com.example.chloechoi.cctvparkingcontrolproject.main;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -16,6 +16,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.chloechoi.cctvparkingcontrolproject.main.Fragment.MapFragment;
+import com.example.chloechoi.cctvparkingcontrolproject.main.Fragment.UserFragment;
+import com.example.chloechoi.cctvparkingcontrolproject.main.Fragment.WriteFragment;
+import com.example.chloechoi.cctvparkingcontrolproject.main.Fragment.history.HistoryFragment;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -32,7 +36,7 @@ import java.util.ArrayList;
  * Created by chloechoi on 28/11/2018.
  */
 
-public class FragmentActivity extends android.support.v4.app.FragmentActivity{
+public class MainActivity extends android.support.v4.app.FragmentActivity{
     int curFragment;
     private MyPermissionListner mPermissionListner;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -70,7 +74,7 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity{
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.to_map_fragment);
-        mapFragment.getMapAsync((OnMapReadyCallback) FragmentActivity.this); //onMapReady() 실행됨.
+        mapFragment.getMapAsync((OnMapReadyCallback) MainActivity.this); //onMapReady() 실행됨.
     }
 
     @SuppressLint("MissingPermission")
@@ -92,7 +96,7 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity{
     }
 
     private class MyPermissionListner implements PermissionListener {
-        private LocationManager locationManager = (LocationManager) FragmentActivity.this.getSystemService(Context.LOCATION_SERVICE);
+        private LocationManager locationManager = (LocationManager) MainActivity.this.getSystemService(Context.LOCATION_SERVICE);
 
         @Override
         public void onPermissionGranted() {
@@ -108,7 +112,7 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity{
 
         @Override
         public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-            Toast.makeText(FragmentActivity.this, "permission needed : " + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "permission needed : " + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 

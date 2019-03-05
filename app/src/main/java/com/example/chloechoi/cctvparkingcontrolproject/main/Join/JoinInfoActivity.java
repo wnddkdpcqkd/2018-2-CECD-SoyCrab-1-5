@@ -1,18 +1,12 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Join;
+package com.example.chloechoi.cctvparkingcontrolproject.main.Join;
 
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.ContactsContract;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -22,10 +16,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.chloechoi.cctvparkingcontrolproject.PermissionUtils;
+import com.example.chloechoi.cctvparkingcontrolproject.test.PermissionUtils;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 
-public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
+public class JoinInfoActivity extends android.support.v4.app.FragmentActivity{
     String[] appList = {"카카오내비", "T map", "네이버 지도"};
 
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
@@ -48,6 +42,16 @@ public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
         CheckItemThread thread = new CheckItemThread();
         thread.start();
 
+        final EditText edtEmail = (EditText) findViewById(R.id.edt_email);
+
+        edtEmail.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        edtEmail.setText("");
+                    }
+                }
+        );
         findViewById(R.id.join_get_from_gallery).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -90,8 +94,8 @@ public class JoinStageActivity extends android.support.v4.app.FragmentActivity{
         ImageView toNextBtn = (ImageView) findViewById(R.id.join_complete_btn);
         if(toNextBtn.getDrawable().getConstantState().equals
                 (getResources().getDrawable(R.drawable.join_next_valid).getConstantState())){
-            // 서버에 사용자 정보 전송
-            Intent intent = new Intent(JoinStageActivity.this, JoinCompletedActivity.class);
+            // TODO 서버에 사용자 정보 전송
+            Intent intent = new Intent(JoinInfoActivity.this, JoinCompletedActivity.class);
             startActivity(intent);
         }
         else{

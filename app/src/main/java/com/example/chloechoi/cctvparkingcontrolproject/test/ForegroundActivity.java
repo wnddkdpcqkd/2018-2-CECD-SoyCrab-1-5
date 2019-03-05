@@ -1,8 +1,6 @@
-package com.example.chloechoi.cctvparkingcontrolproject;
+package com.example.chloechoi.cctvparkingcontrolproject.test;
 
 import android.app.ActivityManager;
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import com.example.chloechoi.cctvparkingcontrolproject.R;
 
 /**
  * Created by chloechoi on 27/11/2018.

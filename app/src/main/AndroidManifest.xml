@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".Join.GlobalApplication"
+        android:name=".main.Join.GlobalApplication"
 
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,17 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar">
-        <activity android:name=".Fragment.FragmentActivity">
+        <activity android:name=".main.Join.JoinActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ForegroundActivity"/>
-        <activity android:name=".Join.JoinStageActivity"/>
-        <activity android:name=".Join.JoinCompletedActivity"/>
+        <activity android:name=".test.ForegroundActivity"/>
+        <activity android:name=".main.Join.JoinInfoActivity"/>
+        <activity android:name=".main.Join.JoinCompletedActivity"/>
+        <activity android:name=".main.MainActivity"/>
 
-        <service android:name=".MyService"/>
+        <service android:name=".test.MyService"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

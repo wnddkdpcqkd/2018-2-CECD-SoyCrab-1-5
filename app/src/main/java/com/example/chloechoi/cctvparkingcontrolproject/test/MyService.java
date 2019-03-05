@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject;
+package com.example.chloechoi.cctvparkingcontrolproject.test;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
+
+import com.example.chloechoi.cctvparkingcontrolproject.R;
 
 /**
  * Created by chloechoi on 27/11/2018.
@@ -44,7 +45,7 @@ public class MyService extends Service {
         counter++;
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);
+                new Intent(this, TestActivity.class), 0);
 
         return new NotificationCompat.Builder(this)
                 .setContentTitle("soyCrab")
@@ -66,7 +67,7 @@ public class MyService extends Service {
             stopForeground(true);
             stopSelf();
 
-            Intent mainActivityIntent = new Intent(this, MainActivity.class);
+            Intent mainActivityIntent = new Intent(this, TestActivity.class);
             startActivity(mainActivityIntent);
         }
 

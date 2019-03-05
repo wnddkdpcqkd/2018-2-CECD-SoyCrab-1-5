@@ -1,9 +1,8 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Join;
+package com.example.chloechoi.cctvparkingcontrolproject.main.Join;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.chloechoi.cctvparkingcontrolproject.R;
@@ -103,7 +102,7 @@ public class JoinActivity extends android.support.v4.app.FragmentActivity {
                     Log.e("UserProfile", userProfile.toString());
                     Log.e("UserProfile", userProfile.getId() + "");
 
-                    Intent intent = new Intent(JoinActivity.this, JoinStageActivity.class);
+                    Intent intent = new Intent(JoinActivity.this, JoinInfoActivity.class);
                     intent.putExtra("userName", userProfile.getNickname());
                     startActivity(intent);
                 }

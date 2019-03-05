@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Fragment;
+package com.example.chloechoi.cctvparkingcontrolproject.list;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

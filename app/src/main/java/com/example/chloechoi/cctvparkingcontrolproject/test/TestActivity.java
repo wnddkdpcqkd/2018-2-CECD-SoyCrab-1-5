@@ -1,21 +1,15 @@
-package com.example.chloechoi.cctvparkingcontrolproject;
+package com.example.chloechoi.cctvparkingcontrolproject.test;
 
 import android.app.ActivityManager;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import com.example.chloechoi.cctvparkingcontrolproject.R;
 
-public class MainActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

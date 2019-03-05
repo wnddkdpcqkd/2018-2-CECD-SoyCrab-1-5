@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.chloechoi.cctvparkingcontrolproject;
+package com.example.chloechoi.cctvparkingcontrolproject.test;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
