@@ -102,7 +102,7 @@ public class JoinActivity extends android.support.v4.app.FragmentActivity {
                     Log.e("UserProfile", userProfile.toString());
                     Log.e("UserProfile", userProfile.getId() + "");
 
-                    Intent intent = new Intent(JoinActivity.this, JoinStageActivity.class);
+                    Intent intent = new Intent(JoinActivity.this, JoinInfoActivity.class);
                     intent.putExtra("userName", userProfile.getNickname());
                     startActivity(intent);
                 }

@@ -70,6 +70,7 @@
                 android:textSize="15dp"
                 android:layout_marginRight="30dp"/>
             <EditText
+                android:id="@+id/edt_email"
                 android:text="이메일을 입력하세요"
                 android:textSize="15dp"
                 android:background="@null"/>

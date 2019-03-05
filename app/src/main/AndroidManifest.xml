@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".test.ForegroundActivity"/>
-        <activity android:name=".main.Join.JoinStageActivity"/>
+        <activity android:name=".main.Join.JoinInfoActivity"/>
         <activity android:name=".main.Join.JoinCompletedActivity"/>
 
         <service android:name=".test.MyService"/>
