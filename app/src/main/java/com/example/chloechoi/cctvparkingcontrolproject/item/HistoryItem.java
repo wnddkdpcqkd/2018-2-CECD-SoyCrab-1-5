@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Fragment;
+package com.example.chloechoi.cctvparkingcontrolproject.item;
 
 /**
  * Created by chloechoi on 12/12/2018.

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.chloechoi.cctvparkingcontrolproject.Fragment.history.HistoryFragment;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
