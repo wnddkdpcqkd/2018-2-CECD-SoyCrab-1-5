@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Fragment.history;
+package com.example.chloechoi.cctvparkingcontrolproject.main.Fragment.history;
 
 import android.app.Fragment;
 import android.os.Bundle;

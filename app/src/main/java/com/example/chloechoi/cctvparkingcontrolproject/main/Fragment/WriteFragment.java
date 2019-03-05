@@ -1,10 +1,9 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Fragment;
+package com.example.chloechoi.cctvparkingcontrolproject.main.Fragment;
 
 import android.Manifest;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,9 +17,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.chloechoi.cctvparkingcontrolproject.PermissionUtils;
+import com.example.chloechoi.cctvparkingcontrolproject.test.PermissionUtils;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 
 import java.io.File;

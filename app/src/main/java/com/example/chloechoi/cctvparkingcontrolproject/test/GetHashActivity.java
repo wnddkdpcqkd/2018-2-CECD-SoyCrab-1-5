@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject;
+package com.example.chloechoi.cctvparkingcontrolproject.test;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;

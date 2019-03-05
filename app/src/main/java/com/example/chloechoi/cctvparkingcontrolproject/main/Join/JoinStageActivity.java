@@ -1,18 +1,12 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Join;
+package com.example.chloechoi.cctvparkingcontrolproject.main.Join;
 
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.ContactsContract;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -22,7 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.chloechoi.cctvparkingcontrolproject.PermissionUtils;
+import com.example.chloechoi.cctvparkingcontrolproject.test.PermissionUtils;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 
 public class JoinStageActivity extends android.support.v4.app.FragmentActivity{

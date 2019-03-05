@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Join;
+package com.example.chloechoi.cctvparkingcontrolproject.main.Join;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

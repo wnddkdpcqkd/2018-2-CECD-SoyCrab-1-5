@@ -1,9 +1,8 @@
-package com.example.chloechoi.cctvparkingcontrolproject.Join;
+package com.example.chloechoi.cctvparkingcontrolproject.main.Join;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.chloechoi.cctvparkingcontrolproject.R;

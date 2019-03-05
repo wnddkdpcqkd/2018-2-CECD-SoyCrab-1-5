@@ -1,4 +1,4 @@
-package com.example.chloechoi.cctvparkingcontrolproject;
+package com.example.chloechoi.cctvparkingcontrolproject.test;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
+
+import com.example.chloechoi.cctvparkingcontrolproject.R;
 
 /**
  * Created by chloechoi on 27/11/2018.
