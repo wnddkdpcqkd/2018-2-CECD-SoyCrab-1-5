@@ -38,15 +38,14 @@ public class ParkingInfo {
         }
     }
 
-    public String getSimpleLocation(){
+    public String getSimpleAddress(){
+        String simpleAddress = "";
 
-        /**
-         * TODO
-         * 멤버변수 locationStr을 이용
-         * return 간단한 형태의 location
-         * ex. 을지로 4가 36-2
-         */
+        simpleAddress += address.get(0).getSubLocality();
+        simpleAddress += address.get(0).getThoroughfare();
+        simpleAddress += address.get(0).getSubThoroughfare();
+        simpleAddress += address.get(0).getFeatureName();
 
-        return "TODO";
+        return simpleAddress;
     }
 }
