@@ -50,10 +50,11 @@ public class MainActivity extends android.support.v4.app.FragmentActivity{
         setContentView(R.layout.activity_fragment);
 
         /*TODO
-        * 사용자가 마지막으로 접근한 프래그먼트 띄우기*/
+        * 사용자가 마지막으로 접근한 프래그먼트 띄우기
+        * MapFragment 오류남*/
 
-        Fragment fragment = new MapFragment();
-        curFragment = 0;
+        Fragment fragment = new WriteFragment();
+        curFragment = 1;
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.container, fragment);
