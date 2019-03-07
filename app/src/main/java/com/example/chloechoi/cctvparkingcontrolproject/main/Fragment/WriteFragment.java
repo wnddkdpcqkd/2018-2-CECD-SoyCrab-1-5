@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -46,6 +47,8 @@ public class WriteFragment extends Fragment{
     ImageView parking_info_pic;
     ImageView parking_get_pic;
 
+    ParkingInfo mParkingInfo;
+
     public static final String FILE_NAME = "temp.jpg";
     public static final int CAMERA_PERMISSIONS_REQUEST = 2;
     public static final int CAMERA_IMAGE_REQUEST = 3;
@@ -66,7 +69,7 @@ public class WriteFragment extends Fragment{
              * 위도 경도 값을 받아와야함
              * 지금은 일단 학교의 위도 경도 값으로 넣어뒀음!!
              */
-            ParkingInfo mParkingInfo = new ParkingInfo(37.5574771, 127.0020518, getContext());
+            mParkingInfo = new ParkingInfo(37.5574771, 127.0020518, getContext());
 
             //String addressInfo = "testInfo";
             //String parkedTime = "50분 전";
@@ -84,6 +87,8 @@ public class WriteFragment extends Fragment{
                             /*TODO 서버 API에 맞춰 서버에 전달*/
                             parkingExtraInfo = (EditText) v.findViewById(R.id.parking_extra_info);
                             String strExtraInfo = parkingExtraInfo.getText().toString();
+
+                            mParkingInfo.setExtraInfo(strExtraInfo);
                         }
                     }
             );
@@ -156,9 +161,13 @@ public class WriteFragment extends Fragment{
             try {
                 // scale the image to save on bandwidth
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
-                bitmap = bitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+                bitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+
                 parking_info_pic.setImageBitmap(bitmap); // 이미지뷰에 이미지 삽입
                 parking_get_pic.setImageResource(android.R.color.transparent);
+
+
+                mParkingInfo.setImgUrl(bitmap.toString());
             } catch (IOException e) {
                 //Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
             }

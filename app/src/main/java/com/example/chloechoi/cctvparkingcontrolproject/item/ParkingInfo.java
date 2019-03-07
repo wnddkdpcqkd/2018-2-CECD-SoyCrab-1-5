@@ -17,7 +17,8 @@ public class ParkingInfo {
     private List<Address> address;
     //private SimpleDateFormat parkedTime;
     private String parkedTime;
-    private int image;
+    private String extraInfo;
+    private String imgUrl;
 
     private Geocoder geocoder;
 
@@ -64,5 +65,13 @@ public class ParkingInfo {
         String simpleTime = strArr[2];
 
         return simpleTime;
+    }
+
+    public void setExtraInfo(String extraInfo){
+        this.extraInfo = extraInfo;
+    }
+
+    public void setImgUrl(String imgUrl){
+        this.imgUrl = imgUrl;
     }
 }
