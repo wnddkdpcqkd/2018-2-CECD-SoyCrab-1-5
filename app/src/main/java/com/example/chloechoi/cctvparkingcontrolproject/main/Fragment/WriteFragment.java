@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.chloechoi.cctvparkingcontrolproject.item.ParkingInfo;
 import com.example.chloechoi.cctvparkingcontrolproject.test.PermissionUtils;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 
@@ -45,6 +47,8 @@ public class WriteFragment extends Fragment{
     ImageView parking_info_pic;
     ImageView parking_get_pic;
 
+    ParkingInfo mParkingInfo;
+
     public static final String FILE_NAME = "temp.jpg";
     public static final int CAMERA_PERMISSIONS_REQUEST = 2;
     public static final int CAMERA_IMAGE_REQUEST = 3;
@@ -57,17 +61,24 @@ public class WriteFragment extends Fragment{
         final View rootView = inflater.inflate(R.layout.fragment_write,container, false);
         state = 0;
 
-        if(state == 0){ // 주차기록하기뷰
-            // 서버에서 사용자 위치, 시간 받아와서
-            // 맵에 표시 및 구 뒤의 간단한 주소명 출력
-            String addressInfo = "testInfo";
-            String parkedTime = "50분 전";
+        if(state == 0){
+
+            /**
+             * TODO
+             * parkingInfo 클래스의 생성자 매개변수로 들어가는
+             * 위도 경도 값을 받아와야함
+             * 지금은 일단 학교의 위도 경도 값으로 넣어뒀음!!
+             */
+            mParkingInfo = new ParkingInfo(37.5574771, 127.0020518, getContext());
+
+            //String addressInfo = "testInfo";
+            //String parkedTime = "50분 전";
 
             parking_info = (TextView) rootView.findViewById(R.id.parking_info);
             parking_time = (TextView) rootView.findViewById(R.id.parking_time);
 
-            parking_info.setText(addressInfo);
-            parking_time.setText(parkedTime);
+            parking_info.setText(mParkingInfo.getSimpleAddress());
+            parking_time.setText(mParkingInfo.getSimpleTime());
 
             rootView.findViewById(R.id.write_register).setOnClickListener(
                     new View.OnClickListener() {
@@ -76,6 +87,8 @@ public class WriteFragment extends Fragment{
                             /*TODO 서버 API에 맞춰 서버에 전달*/
                             parkingExtraInfo = (EditText) v.findViewById(R.id.parking_extra_info);
                             String strExtraInfo = parkingExtraInfo.getText().toString();
+
+                            mParkingInfo.setExtraInfo(strExtraInfo);
                         }
                     }
             );
@@ -148,9 +161,13 @@ public class WriteFragment extends Fragment{
             try {
                 // scale the image to save on bandwidth
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
-                bitmap = bitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+                bitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+
                 parking_info_pic.setImageBitmap(bitmap); // 이미지뷰에 이미지 삽입
                 parking_get_pic.setImageResource(android.R.color.transparent);
+
+
+                mParkingInfo.setImgUrl(bitmap.toString());
             } catch (IOException e) {
                 //Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
             }
