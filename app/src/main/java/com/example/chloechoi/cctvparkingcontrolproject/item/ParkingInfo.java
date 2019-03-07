@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ParkingInfo {
@@ -14,7 +15,8 @@ public class ParkingInfo {
     private double latitude;
     private double longitude;
     private List<Address> address;
-    private SimpleDateFormat parkedTime;
+    //private SimpleDateFormat parkedTime;
+    private String parkedTime;
     private int image;
 
     private Geocoder geocoder;
@@ -24,6 +26,10 @@ public class ParkingInfo {
         this.longitude = longitude;
         this.mContext = mContext;
 
+        setData();
+    }
+
+    private void setData(){
         geocoder = new Geocoder(mContext);
         address = null;
 
@@ -33,19 +39,30 @@ public class ParkingInfo {
             e.printStackTrace();
         }
 
-        for(Address ad : address){
-            Log.d("~~~~", ad.toString());
-        }
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyy.MMMMM.dd GGG hh:mm aaa");
+        parkedTime = sdf.format(date);
+
+        Log.d("~~~~", parkedTime);
     }
 
     public String getSimpleAddress(){
         String simpleAddress = "";
 
-        simpleAddress += address.get(0).getSubLocality();
-        simpleAddress += address.get(0).getThoroughfare();
+        simpleAddress += (address.get(0).getSubLocality() + " ");
+        simpleAddress += (address.get(0).getThoroughfare() + " ");
         simpleAddress += address.get(0).getSubThoroughfare();
-        simpleAddress += address.get(0).getFeatureName();
 
         return simpleAddress;
+    }
+
+    public String getSimpleTime(){
+        String[] strArr = parkedTime.split(" ");
+
+        String simpleTime = strArr[2];
+
+        return simpleTime;
     }
 }

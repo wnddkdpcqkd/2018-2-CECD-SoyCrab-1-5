@@ -58,19 +58,24 @@ public class WriteFragment extends Fragment{
         final View rootView = inflater.inflate(R.layout.fragment_write,container, false);
         state = 0;
 
-        if(state == 0){ // 주차기록하기뷰
-            // 서버에서 사용자 위치, 시간 받아와서
-            // 맵에 표시 및 구 뒤의 간단한 주소명 출력
+        if(state == 0){
+
+            /**
+             * TODO
+             * parkingInfo 클래스의 생성자 매개변수로 들어가는
+             * 위도 경도 값을 받아와야함
+             * 지금은 일단 학교의 위도 경도 값으로 넣어뒀음!!
+             */
             ParkingInfo mParkingInfo = new ParkingInfo(37.5574771, 127.0020518, getContext());
 
-            String addressInfo = "testInfo";
-            String parkedTime = "50분 전";
+            //String addressInfo = "testInfo";
+            //String parkedTime = "50분 전";
 
             parking_info = (TextView) rootView.findViewById(R.id.parking_info);
             parking_time = (TextView) rootView.findViewById(R.id.parking_time);
 
-            parking_info.setText(addressInfo);
-            parking_time.setText(parkedTime);
+            parking_info.setText(mParkingInfo.getSimpleAddress());
+            parking_time.setText(mParkingInfo.getSimpleTime());
 
             rootView.findViewById(R.id.write_register).setOnClickListener(
                     new View.OnClickListener() {
