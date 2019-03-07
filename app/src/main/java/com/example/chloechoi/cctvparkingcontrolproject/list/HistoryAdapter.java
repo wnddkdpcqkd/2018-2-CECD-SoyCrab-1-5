@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.chloechoi.cctvparkingcontrolproject.R;
-import com.example.chloechoi.cctvparkingcontrolproject.item.HistoryItem;
+import com.example.chloechoi.cctvparkingcontrolproject.item.History;
 
 import java.util.ArrayList;
 
@@ -16,9 +16,9 @@ import java.util.ArrayList;
  */
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
-    ArrayList<HistoryItem> mItem;
+    ArrayList<History> mItem;
 
-    public HistoryAdapter(ArrayList<HistoryItem> searchDataSet, Activity activity) {
+    public HistoryAdapter(ArrayList<History> searchDataSet, Activity activity) {
         mItem = searchDataSet;
     }
 

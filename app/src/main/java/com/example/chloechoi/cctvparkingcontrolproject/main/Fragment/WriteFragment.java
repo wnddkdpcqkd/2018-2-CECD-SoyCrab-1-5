@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.chloechoi.cctvparkingcontrolproject.item.ParkingInfo;
 import com.example.chloechoi.cctvparkingcontrolproject.test.PermissionUtils;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 
@@ -60,6 +61,8 @@ public class WriteFragment extends Fragment{
         if(state == 0){ // 주차기록하기뷰
             // 서버에서 사용자 위치, 시간 받아와서
             // 맵에 표시 및 구 뒤의 간단한 주소명 출력
+            ParkingInfo mParkingInfo = new ParkingInfo(37.5574771, 127.0020518, getContext());
+
             String addressInfo = "testInfo";
             String parkedTime = "50분 전";
 

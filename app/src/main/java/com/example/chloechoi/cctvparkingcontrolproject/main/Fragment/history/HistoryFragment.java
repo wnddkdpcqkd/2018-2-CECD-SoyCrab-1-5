@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.chloechoi.cctvparkingcontrolproject.list.HistoryAdapter;
-import com.example.chloechoi.cctvparkingcontrolproject.item.HistoryItem;
+import com.example.chloechoi.cctvparkingcontrolproject.item.History;
 import com.example.chloechoi.cctvparkingcontrolproject.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
@@ -30,7 +30,7 @@ public class HistoryFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private HistoryAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<HistoryItem> mHistoryData;
+    private ArrayList<History> mHistoryData;
     private MaterialCalendarView materialCalendarView;
 
     @Nullable
