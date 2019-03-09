@@ -1,27 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:background="@color/background">
 
-    <Button
-        android:id="@+id/start"
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="#00AA00"
-        android:onClick="start"
-        android:text="서비스 시작"
-        android:textAllCaps="false" />
+        android:weightSum="4"
+        android:layout_margin="10dp"
+        >
 
-    <!--<Button-->
-        <!--android:id="@+id/stop"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="20dp"-->
-        <!--android:background="#AA0000"-->
-        <!--android:onClick="stop"-->
-        <!--android:text="서비스 중지"-->
-        <!--android:textAllCaps="false" />-->
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/to_map_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="ChangeFragment">
+            <ImageView
+                android:id="@+id/to_map_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fragment_map_checked"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/to_write_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="ChangeFragment">
+            <ImageView
+                android:id="@+id/to_write_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fragment_write_unchecked"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/to_history_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="ChangeFragment">
+            <ImageView
+                android:id="@+id/to_history_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fragment_history_unchecked"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/to_user_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="ChangeFragment">
+            <ImageView
+                android:id="@+id/to_user_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fragment_user_unchecked"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -47,7 +47,7 @@ public class MainActivity extends android.support.v4.app.FragmentActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment);
+        setContentView(R.layout.activity_main);
 
         /*TODO
         * 사용자가 마지막으로 접근한 프래그먼트 띄우기
