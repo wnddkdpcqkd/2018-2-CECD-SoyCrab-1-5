@@ -15,7 +15,6 @@ public class ParkingInfo {
     private double latitude;
     private double longitude;
     private List<Address> address;
-    //private SimpleDateFormat parkedTime;
     private String parkedTime;
     private String extraInfo;
     private String imgUrl;
@@ -45,8 +44,6 @@ public class ParkingInfo {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyy.MMMMM.dd GGG hh:mm aaa");
         parkedTime = sdf.format(date);
-
-        Log.d("~~~~", parkedTime);
     }
 
     public String getSimpleAddress(){
